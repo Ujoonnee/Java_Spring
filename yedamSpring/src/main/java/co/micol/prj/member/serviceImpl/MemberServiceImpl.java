@@ -10,6 +10,8 @@ import co.micol.prj.member.service.MemberService;
 import co.micol.prj.member.vo.MemberVO;
 
 @Repository("memberDao")
+// @Service("memberDao")
+// @Component("memberDao")
 public class MemberServiceImpl implements MemberService{
 	@Autowired
 	private MemberMapper map;	// sqlSessionTemplate 이 알아서 주입됨

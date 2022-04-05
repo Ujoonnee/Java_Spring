@@ -20,9 +20,9 @@
 		<property name="mapperLocations" value="classpath*:co/micol/prj/**/service/*-map.xml"></property>
 	</bean>
 	
-	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSessionTemplate">
-		<constructor-arg ref="sqlSessionFactoryBean"/>
-	</bean>
+<!-- 	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSessionTemplate"> -->
+<!-- 		<constructor-arg ref="sqlSessionFactoryBean"/> -->
+<!-- 	</bean> -->
 	
 	<mybatis-spring:scan base-package="co.micol.prj"/>	
 </beans>

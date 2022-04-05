@@ -6,10 +6,9 @@
 	<title>Home</title>
 </head>
 <body>
-	<h1>
-		home.jsp
-	</h1>
-	<a href="memberList.do">멤버목록</a>
-	<a href="noticeList.do">공지사항 목록</a>
+	<h1>home.jsp</h1>
+	<a href="memberJoinForm.do">회원가입</a>
+	<a href="memberLoginForm.do">로그인</a>
+	<a href="memberSelectList.do">멤버목록</a>
 </body>
 </html>

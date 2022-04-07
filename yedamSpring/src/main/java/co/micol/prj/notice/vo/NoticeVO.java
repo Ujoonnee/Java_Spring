@@ -2,13 +2,17 @@ package co.micol.prj.notice.vo;
 
 import java.sql.Date;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class NoticeVO {
 	private int id;
 	private String title;
 	private String content;
 	private Date wdate;
 	private int hit;
+	private String fileName;
+	private String uuidFile;
 }

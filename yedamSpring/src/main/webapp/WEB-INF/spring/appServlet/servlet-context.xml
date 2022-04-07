@@ -23,6 +23,12 @@
 	
 	<context:component-scan base-package="co.micol.prj" />
 	
+		<!-- file upload -->
+	<beans:bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" id="multipartResolver">
+		<beans:property name="maxUploadSize" value="1073741824"/>
+		<beans:property name="maxInMemorySize" value="1073741824"></beans:property>
+	</beans:bean>
+	
 	
 	
 </beans:beans>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.app.notice.serviceImpl.NoticeMapper">
+	<select id="noticeSelectList" resultType="NoticeVO">
+		<![CDATA[
+			SELECT *
+			FROM (
+				SELECT ROWNUM AS RNUM, T.*
+				FROM NOTICE T
+				WHERE ROWNUM <= (SELECT COUNT(*) FROM NOTICE) - ((#{page} - 1) * 10)
+				ORDER BY ID DESC
+			)
+			WHERE (SELECT COUNT(*) FROM NOTICE) - (#{page} * 10) + 1 <= RNUM
+		]]>
+	</select>
+	
+	<select id="noticeSearchList" resultType="NoticeVO">
+		SELECT * FROM NOTICE
+		WHERE 
+		<if test='key == "all"'> 1 = 1 </if>
+		<if test='key == "title"'> TITLE LIKE '%'||#{val}||'%' </if>
+		<if test='key == "content"'> CONTENT LIKE '%'||#{val}||'%' </if>
+		ORDER BY ID DESC
+	</select>
+</mapper>

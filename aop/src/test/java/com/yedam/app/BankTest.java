@@ -191,10 +191,6 @@ public class BankTest {
 		System.out.println(response);
 	}
 	
-	@Test
-	public void bankAuth() {
-		new BankApi().b
-	}
 	
 	@Test
 	public void getToken() {
@@ -205,11 +201,27 @@ public class BankTest {
 		headers.set("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
 		
 		MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-		map.add("code", "");
+		map.add("code", "23wFsseJ72Sys2P7qKhBbPc5qDwTRz");
 		map.add("client_id", "bc9288c2-0b3c-423e-a3e2-15ab8abd8e99");
 		map.add("client_secret", "de213564-0573-4855-9569-a8f044014d6a");
 		map.add("redirect_uri", "http://localhost/html/callback.html");
-		map.add("grant_type", "");
+		map.add("grant_type", "jegX3uEsUL2RrJuf7yfe4slpk4dlNz");
+		
+		ObjectMapper om = new ObjectMapper();
+		String str = "";
+		try {
+			str = om.writeValueAsString(map);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		
+		HttpEntity<String> request = new HttpEntity<String>(str, headers);
+
+		RestTemplate restTemplate = new RestTemplate();
+
+		Map response = restTemplate.postForObject(reqURL, request, Map.class);
+		
+		System.out.println(response);
 		
 	}
 }

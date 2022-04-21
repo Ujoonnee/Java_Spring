@@ -1,11 +1,14 @@
 package com.yedam.app.bank.web;
 
+import java.io.IOException;
 import java.net.URI;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -194,4 +197,28 @@ public class BankApi {
 		return message;
 	}
 	
+	public void bankAuth(HttpServletResponse response) {
+		String redirect_uri= "http://localhost/app/bankCallback";
+		String client_id = "bc9288c2-0b3c-423e-a3e2-15ab8abd8e99";
+		
+		String reqUrl = "https://testapi.openbanking.or.kr/oauth/2.0/authorize";
+		String url = reqUrl 
+				    +"?response_type=code"
+		            +"&client_id="+client_id
+				    +"&redirect_uri="+redirect_uri
+				    +"&scope=inquiry transfer login"
+				    +"&state=12345678901234567890123456789012"
+				    +"&auth_type=0";
+		
+		try {
+			response.sendRedirect(url);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public String getToken(String code) {
+		
+		return "";
+	}
 }

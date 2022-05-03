@@ -16,6 +16,33 @@ import org.springframework.web.bind.annotation.RestController;
 public class BankController {
 	
 	@Autowired BankApi api;
+	
+//	오픈뱅킹 시험
+	
+	@GetMapping("/문제1")
+	public List<AccountVO>계좌목록조회(BankVO vo) {
+		return api.getAccountList(vo); 
+	}
+	
+	@PostMapping(value="/문제2", produces = "text/html; charset=utf-8")
+	public String 계좌별칭변경(@RequestBody Map<String, String> map) {
+		return api.changeAlias(map);
+	}
+	
+	
+	@PostMapping(value="/문제3", produces = "text/html; charset=utf-8")
+	public String 계좌실명조회(@RequestBody Map<String, String> map) {
+		return api.getRealName(map);
+	}
+	
+	@PostMapping(value="/문제4", produces = "text/html; charset=utf-8")
+	public String 출금이체(@RequestBody Map<String, String> map) {
+		return api.withdraw(map);
+	}
+	
+	
+	
+	
 
 	@GetMapping("/accountList")
 	public List<AccountVO>getAccountList(BankVO vo) {
